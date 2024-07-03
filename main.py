@@ -1,6 +1,6 @@
 from dictionary import Dictionary
 
-di = Dictionary("consider")
+di = Dictionary("declare")
 di.process()
 
 with open("target.json", "w") as f:
