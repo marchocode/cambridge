@@ -1,10 +1,8 @@
-from utils import response_txt,response_byte
-from define import Define
+from utils import response_txt
 from element import Elememt
-from bs4 import BeautifulSoup,Tag,NavigableString
+from bs4 import BeautifulSoup,Tag
 import os
 import json
-from urllib.parse import urljoin
 from const import DOMAIN
 
 class Dictionary():
@@ -15,7 +13,7 @@ class Dictionary():
         self.elements=[]
 
     def __str__(self):
-        return json.dumps(self.__dict__)
+        return json.dumps(self.__dict__,indent=4,ensure_ascii=False)
 
     def process(self):
 
@@ -26,8 +24,7 @@ class Dictionary():
         # block
         for item in diet.select("div.pr.entry-body__el"):
             ele = Elememt()
-            ele.cover(item)
-            self.elements.append(ele)
+            self.elements.append(ele.cover(item))
 
     def load(self) -> Tag:
         
@@ -37,24 +34,12 @@ class Dictionary():
             with open(cache_file,) as f:
                 html=f.read()
         else:
-            html = response_txt(self.request_url)
+            html = response_txt(self.url)
             with open(f"{self.word}.html", "w") as f:
                 f.write(html)
 
         obj={"data-id":"cald4"}
         soup = BeautifulSoup(html, 'html.parser')
         return soup.find(**obj)
-    
-    def cover_dict(self, dict:Tag) -> None:
-        
-        header=dict.select_one(".pos-header.dpos-h")
-        sense_list = dict.select("div.pr.dsense")
-
-        self.cover_none(header)
-        self.cover_voice(header)
-
-        for sense in sense_list:
-            define = Define(sense)
-            define.cover()
 
 

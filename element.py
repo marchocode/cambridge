@@ -9,19 +9,22 @@ class Elememt():
         self.pos = None
         self.us_voice = None
         self.uk_voice = None
+        self.us_pron = None
+        self.uk_pron = None
         self.defines = []
 
-    def cover(self, dict: Tag) -> None:
+    def cover(self, tag: Tag) -> dict:
 
-        header=dict.select_one(".pos-header.dpos-h")
-        sense_list = dict.select("div.pr.dsense")
+        header=tag.select_one("div.pos-header.dpos-h")
+        sense_list = tag.select("div.pr.dsense")
         
         self.cover_none(header)
         self.cover_voice(header)
 
         for sense in sense_list:
-            define = Define(sense)
-            define.cover()
+            define = Define()
+            self.defines.append(define.cover(sense))
+        return self.__dict__
 
 
     def cover_none(self, dict:Tag) -> None:
@@ -29,8 +32,11 @@ class Elememt():
 
     def cover_voice(self, dict:Tag) -> None:
 
-        uk_source = dict.select_one(".uk.dpron-i source[type='audio/mpeg']")
-        us_source = dict.select_one(".us.dpron-i source[type='audio/mpeg']")
+        uk_source = dict.select_one("span.uk.dpron-i source[type='audio/mpeg']")
+        us_source = dict.select_one("span.us.dpron-i source[type='audio/mpeg']")
+
+        self.us_pron = dict.select_one("span.us.dpron-i span.pron.dpron").text
+        self.uk_pron = dict.select_one("span.uk.dpron-i span.pron.dpron").text
 
         self.us_voice = urljoin(DOMAIN,us_source['src'])
         self.uk_voice = urljoin(DOMAIN,uk_source['src'])
