@@ -1,3 +1,6 @@
 .env
 .venv
+build/
+dist/
+cambridge_cli.egg-info/
 __pycache__

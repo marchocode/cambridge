@@ -1,20 +1,25 @@
-[build-system]
-requires = ["setuptools >= 61.0"]
-build-backend = "setuptools.build_meta"
-
 [project]
-name = "spam-eggs"
-version = "2020.0.0"
-description = "Lovely Spam! Wonderful Spam!"
+name = "cambridge-cli"
+version = "1.0"
+description = "cambridge dictionary for command line."
 requires-python = ">= 3.8"
 readme = "README.md"
+
 dependencies = [
   "requests",
   "beautifulsoup4",
 ]
+
 authors = [
   {name = "marcho", email = "marcho@gmail.com"},
 ]
 
+[build-system]
+requires = ["setuptools >= 61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
 [project.scripts]
-cambridge-cli = "cambridge:main_cli"
+cam-cli = "cambridge:main"

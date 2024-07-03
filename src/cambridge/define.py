@@ -1,4 +1,4 @@
-from bs4 import Tag,NavigableString
+from bs4 import Tag
 
 class Define:
 

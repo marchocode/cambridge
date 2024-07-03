@@ -1,9 +1,9 @@
-from utils import response_txt
-from element import Elememt
+from .utils import response_txt
+from .element import Elememt
 from bs4 import BeautifulSoup,Tag
 import os
 import json
-from const import DOMAIN
+from .const import DOMAIN
 
 class Dictionary():
 

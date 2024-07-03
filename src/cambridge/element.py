@@ -1,7 +1,7 @@
 from bs4 import Tag
 from urllib.parse import urljoin
-from const import DOMAIN
-from define import Define
+from .const import DOMAIN
+from .define import Define
 
 class Elememt():
 

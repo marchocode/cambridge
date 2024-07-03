@@ -1,0 +1,24 @@
+{
+    "word": "key",
+    "url": "https://dictionary.cambridge.org/dictionary/english/key",
+    "elements": [
+        {
+            "pos": "noun",
+            "us_voice": "https://dictionary.cambridge.org/media/english/us_pron/k/key/key__/key.mp3",
+            "uk_voice": "https://dictionary.cambridge.org/media/english/uk_pron/u/ukk/ukker/ukkero_008.mp3",
+            "defines": []
+        },
+        {
+            "pos": "adjective",
+            "us_voice": "https://dictionary.cambridge.org/media/english/us_pron/k/key/key__/key.mp3",
+            "uk_voice": "https://dictionary.cambridge.org/media/english/uk_pron/u/ukk/ukker/ukkero_008.mp3",
+            "defines": []
+        },
+        {
+            "pos": "verb",
+            "us_voice": "https://dictionary.cambridge.org/media/english/us_pron/k/key/key__/key.mp3",
+            "uk_voice": "https://dictionary.cambridge.org/media/english/uk_pron/u/ukk/ukker/ukkero_008.mp3",
+            "defines": []
+        }
+    ]
+}
