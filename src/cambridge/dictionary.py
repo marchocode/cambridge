@@ -11,6 +11,7 @@ class Dictionary():
         self.word=word
         self.url=f"{DOMAIN}/dictionary/english/{word}"
         self.elements=[]
+        self.process()
 
     def __str__(self):
         return json.dumps(self.__dict__,indent=4,ensure_ascii=False)
@@ -25,6 +26,10 @@ class Dictionary():
         for item in diet.select("div.pr.entry-body__el"):
             ele = Elememt()
             self.elements.append(ele.cover(item))
+
+    def print(self) -> None:
+        print(f"{self.word}")
+        print(f"{self.url}")
 
     def load(self) -> Tag:
         
