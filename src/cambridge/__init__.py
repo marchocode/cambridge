@@ -4,5 +4,4 @@ from .args import parse_args
 def main():
     args = parse_args()
     d = Dictionary(args.word)
-    d.process()
-    print(d)
+    d.print()

@@ -2,6 +2,9 @@ from bs4 import Tag
 from urllib.parse import urljoin
 from .const import DOMAIN
 from .define import Define
+from rich.console import Console
+
+console = Console()
 
 class Elememt():
 
@@ -23,10 +26,18 @@ class Elememt():
 
         for sense in sense_list:
             define = Define()
-            self.defines.append(define.cover(sense))
+            define.cover(sense)
+            self.defines.append(define)
         return self.__dict__
 
+    def print(self) -> None:
+        console.print(f"UK {self.uk_pron} US {self.us_pron} \[{self.pos}]")
+        console.line()
 
+        for de in self.defines:
+            de.print()
+
+    
     def cover_none(self, dict:Tag) -> None:
         self.pos = dict.select_one('span.pos.dpos').text   
 

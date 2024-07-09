@@ -1,4 +1,7 @@
 from bs4 import Tag
+from rich.console import Console
+
+console = Console()
 
 class Define:
 
@@ -24,6 +27,16 @@ class Define:
 
         if leval:
             self.leval = leval.text
+    
+    def print(self) -> None:
+
+        console.print(f"### {self.leval}", style="bright_blue")
+        console.print(f"{self.define}",style="green")
+
+        console.line()
+        for e in self.examples:
+            console.print(f"- {e}",style="cyan")
+        console.line()
 
     def cover_guide(self, tag:Tag) -> None:
         guide = tag.select_one("span.guideword.dsense_gw > span")

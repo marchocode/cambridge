@@ -1,4 +1,4 @@
 from src.cambridge import Dictionary
 
-d = Dictionary('apple')
+d = Dictionary('device')
 d.print()

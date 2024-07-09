@@ -1,9 +1,12 @@
 from .utils import response_txt
 from .element import Elememt
 from bs4 import BeautifulSoup,Tag
+from rich.console import Console
 import os
 import json
 from .const import DOMAIN
+
+console = Console()
 
 class Dictionary():
 
@@ -25,11 +28,19 @@ class Dictionary():
         # block
         for item in diet.select("div.pr.entry-body__el"):
             ele = Elememt()
-            self.elements.append(ele.cover(item))
+            ele.cover(item)
+            self.elements.append(ele)
 
     def print(self) -> None:
-        print(f"{self.word}")
-        print(f"{self.url}")
+
+        # word
+        console.print(f"## {self.word}",style="bold red")
+        console.print(f"## {self.url}",style="red")
+        console.print()
+        
+        for ele in self.elements:
+            ele.print()
+
 
     def load(self) -> Tag:
         
