@@ -48,6 +48,8 @@ class Dictionary():
             "elements": [element.to_dict() for element in self.elements]
         }
 
+    def to_json(self) -> str:
+        return json.dumps(self.to_dict(),ensure_ascii=False)
 
     def load(self) -> Tag:
         
