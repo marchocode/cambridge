@@ -52,17 +52,7 @@ class Dictionary():
         return json.dumps(self.to_dict(),ensure_ascii=False)
 
     def load(self) -> Tag:
-        
-        cache_file=f"{self.word}.html"
-
-        if os.path.exists(cache_file):
-            with open(cache_file,) as f:
-                html=f.read()
-        else:
-            html = response_txt(self.url)
-            with open(f"{self.word}.html", "w") as f:
-                f.write(html)
-
+        html = response_txt(self.url)
         obj={"data-id":"cald4"}
         soup = BeautifulSoup(html, 'html.parser')
         return soup.find(**obj)
