@@ -38,6 +38,14 @@ class Define:
             console.print(f"- {e}",style="cyan")
         console.line()
 
+    def to_dict(self) -> dict:
+        return {
+            "leval": self.leval,
+            "define": self.define,
+            "guide": self.guide,
+            "examples": self.examples,
+        }
+
     def cover_guide(self, tag:Tag) -> None:
         guide = tag.select_one("span.guideword.dsense_gw > span")
         if guide:

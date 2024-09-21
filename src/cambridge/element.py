@@ -37,6 +37,15 @@ class Elememt():
         for de in self.defines:
             de.print()
 
+    def to_dict(self) -> dict:
+        return {
+            "pos": self.pos,
+            "us_voice": self.us_voice,
+            "uk_voice": self.uk_voice,
+            "us_pron": self.us_pron,
+            "uk_pron": self.uk_pron,
+            "defines": [define.to_dict() for define in self.defines],
+        }
     
     def cover_none(self, dict:Tag) -> None:
         self.pos = dict.select_one('span.pos.dpos').text   

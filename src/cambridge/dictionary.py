@@ -41,6 +41,13 @@ class Dictionary():
         for ele in self.elements:
             ele.print()
 
+    def to_dict(self) -> dict:
+        return {
+            "word": self.word,
+            "url": self.url,
+            "elements": [element.to_dict() for element in self.elements]
+        }
+
 
     def load(self) -> Tag:
         
